@@ -24,8 +24,8 @@ public class ControllerTest {
 		perkList.add(new Perk(20,"rock-band",-195));
 		perkList.add(new Perk(21,"playing-drums",-295));
 		Controller controller = new Controller(perkList);
-		//ArrayList<ArrayList<Perk>> calorieNeutralGroups = controller.findCalorieNeutralPerkGroups();
-		//System.out.println(calorieNeutralGroups.size());
+		ArrayList<ArrayList<Perk>> calorieNeutralGroups = controller.findCalorieNeutralPerkGroups();
+		System.out.println(calorieNeutralGroups.size());
 	}
 
 }

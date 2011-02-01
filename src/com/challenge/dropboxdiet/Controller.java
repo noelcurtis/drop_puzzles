@@ -2,6 +2,7 @@ package com.challenge.dropboxdiet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Controller 
 {
@@ -33,7 +34,7 @@ public class Controller
 		}
 		return calorieNegativePerks;
 	}
-	/*
+	
 	private ArrayList<ArrayList<Integer>> generateCombinations(int numberOfPerks)
 	{
 		ArrayList<ArrayList<Integer>> combinations = new ArrayList<ArrayList<Integer>>();
@@ -43,7 +44,10 @@ public class Controller
 			while(gen.hasMore())
 			{
 				int[] x = gen.getNext();
-				combinations.add(new ArrayList<Integer>(Arrays.asList(x)));
+				ArrayList<Integer> combination = new ArrayList<Integer>();
+				for(int item:x)
+					combination.add(new Integer(item));
+				combinations.add(combination);
 			}
 		}
 		return combinations;
@@ -54,8 +58,8 @@ public class Controller
 		ArrayList<ArrayList<Perk>> calorieNeutralPerks = new ArrayList<ArrayList<Perk>>();
 		ArrayList<Perk> caloriePositivePerks = this.getCaloriePositivePerks();
 		ArrayList<Perk> calorieNegativePerks = this.getCalorieNegativePerks();
-		ArrayList<int[]> caloriePositiveCombinations = this.generateCombinations(caloriePositivePerks.size());
-		ArrayList<int[]> calorieNegativeCombinations = this.generateCombinations(calorieNegativePerks.size());
+		ArrayList<ArrayList<Integer>> caloriePositiveCombinations = this.generateCombinations(caloriePositivePerks.size());
+		ArrayList<ArrayList<Integer>> calorieNegativeCombinations = this.generateCombinations(calorieNegativePerks.size());
 		ArrayList<ArrayList<Perk>> caloriePositivePerkCombinations = this.buildPerkCombinationsList(caloriePositivePerks, caloriePositiveCombinations);
 		ArrayList<ArrayList<Perk>> calorieNegativePerkCombinations = this.buildPerkCombinationsList(calorieNegativePerks, calorieNegativeCombinations);
 		if(caloriePositivePerkCombinations.size()==0||calorieNegativePerkCombinations.size()==0)
@@ -83,15 +87,15 @@ public class Controller
 		}
 		return calorieNeutralPerks;
 	}
-	*/
 	
-	private ArrayList<ArrayList<Perk>> buildPerkCombinationsList(ArrayList<Perk> perks, ArrayList<int[]> combinations)
+	
+	private ArrayList<ArrayList<Perk>> buildPerkCombinationsList(ArrayList<Perk> perks, ArrayList<ArrayList<Integer>> combinations)
 	{
 		ArrayList<ArrayList<Perk>> perkCombinations = new ArrayList<ArrayList<Perk>>();
-		for(int[] combination: combinations)
+		for(ArrayList<Integer> combination: combinations)
 		{
 			ArrayList<Perk> perkCombination = new ArrayList<Perk>();
-			for(int i:combination)
+			for(Integer i:combination)
 			{
 				perkCombination.add(perks.get(i));
 			}
@@ -113,6 +117,7 @@ public class Controller
 		{
 			sum+= perk.getCaloricImpact();
 		}
+		System.out.println(sum);
 		return sum;
 	}
 }
