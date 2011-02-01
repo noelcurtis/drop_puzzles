@@ -20,12 +20,17 @@ public class ControllerTest {
 		perkList.add(new Perk(7,"mexican-coke",150));
 		perkList.add(new Perk(8,"dropballers-basktball",-611));
 		perkList.add(new Perk(9,"coding-siz-hours",-466));
-		perkList.add(new Perk(19,"riding-scooter",-42));
-		perkList.add(new Perk(20,"rock-band",-195));
-		perkList.add(new Perk(21,"playing-drums",-295));
+		perkList.add(new Perk(10,"riding-scooter",-42));
+		perkList.add(new Perk(11,"rock-band",-195));
+		perkList.add(new Perk(12,"playing-drums",-295));
 		Controller controller = new Controller(perkList);
 		ArrayList<ArrayList<Perk>> calorieNeutralGroups = controller.findCalorieNeutralPerkGroups();
-		System.out.println(calorieNeutralGroups.size());
+		for(ArrayList<Perk> group:calorieNeutralGroups)
+		{
+			System.out.println("Perk Group");
+			for(Perk perk : group)
+				perk.printPerk();
+		}
 	}
 
 }

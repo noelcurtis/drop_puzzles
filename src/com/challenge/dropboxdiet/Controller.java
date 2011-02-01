@@ -76,6 +76,7 @@ public class Controller
 					{
 						ArrayList<Perk> neutralCombination = new ArrayList<Perk>(caloriePositivePerkCombination);
 						neutralCombination.addAll(calorieNegativePerkCombination);
+						calorieNeutralPerks.add(neutralCombination);
 					}
 				
 				}
@@ -117,7 +118,6 @@ public class Controller
 		{
 			sum+= perk.getCaloricImpact();
 		}
-		System.out.println(sum);
 		return sum;
 	}
 }
